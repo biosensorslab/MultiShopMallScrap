@@ -2,10 +2,10 @@ package com.prism.Product_Finder;
 
 import java.util.Random;
 
-public class ConcreteRunnable implements Runnable {
+public class G_Market_ConcreteRunnable implements Runnable {
 
     int seq;
-    public ConcreteRunnable(int seq) {
+    public G_Market_ConcreteRunnable(int seq) {
         this.seq = seq;
     }
     public void run() {

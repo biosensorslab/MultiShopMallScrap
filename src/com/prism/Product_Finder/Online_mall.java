@@ -5,7 +5,7 @@ import java.util.List;
 
 
 
-public class KoreaMall {
+public class Online_mall {
 	public static void main(String[] args) throws InterruptedException {
 
 

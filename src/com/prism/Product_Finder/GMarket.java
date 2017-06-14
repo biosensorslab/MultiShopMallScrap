@@ -7,10 +7,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.tasks.io.ImageSink;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Attribute;
-import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -19,25 +16,19 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Random;
 
-class ProectInformation
-{
-    String name;
-    String address;
-}
 
 /**
  * Created by hadoop on 2017. 6. 2..
  */
-class G_Market{
+class GMarket{
 
     HashMap<String, Integer> Item_Size_Spec = new HashMap<String, Integer>();
     HashMap<String, Integer> Item_Height_Spec = new HashMap<String, Integer>();
     HashMap<String, Integer> Item_Spec = new HashMap<String, Integer>();
 
-    HashMap<String, ProectInformation> Category5 = new HashMap<String, ProectInformation>();
-    public G_Market(String argu)
+//    HashMap<String, G_Market_ProectInformation> Category5 = new HashMap<String, ProectInformation>();
+    public GMarket(String argu)
     {
         System.out.println("G_Market_Object Created with " + argu);
     }
@@ -192,11 +183,12 @@ class G_Market{
         }
     }
 
-    public void Dept_3_FullStore(String shop_title, String address) {
+    public void Dept_3_FullStore(String category, String shop_title, String address) {
         WebClient webClient = null;
         HtmlPage page_esm = null;
         String final_page = "";
-        String root = System.getProperty("user.dir");
+//        String root = System.getProperty("user.dir")  +"/scrap_data";
+        String root = "/tmp"  +"/scrap_data";
         boolean bSuccess = false;
         while(bSuccess == false) {
             try {
@@ -296,6 +288,22 @@ class G_Market{
                 }
             }
         }
+
+//        DBConfig dbwork = new DBConfig();
+        java.util.Date dt = new java.util.Date();
+
+        java.text.SimpleDateFormat sdf =
+                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String currentTime = sdf.format(dt);
+        int shop_id = -1;
+//        if(corp_name.length() > 1)
+//            dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 1, currentTime );
+//        else
+//            dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 0, currentTime );
+
+//        shop_id = dbwork.GET_SHOP_ID(category,corp_name, address);
+
         Elements tags_review = doc_esm.select("span[data-goodscode]");
         String goodscode ="";
         for(Element tag_review: tags_review)
@@ -321,15 +329,17 @@ class G_Market{
         File file = null;
 
         //***Get item review
-        Item_Review(root + "/review/" + corp_name, goodscode);
+        category = category.replace("/" , "&");
+
+        Item_Review(shop_id, root + "/" + category +"/review/" + corp_name, goodscode);
 
         try {
-            file = new File(root + "/html/");
+            file = new File(root + "/" + category +  "/html/");
             if(!file.exists())
             {
                 file.mkdirs();
             }
-            FileWriter fw = new FileWriter(root + "/html/" + corp_name+"_html.txt");
+            FileWriter fw = new FileWriter(root + "/" + category + "/html/" + corp_name+"_html.txt");
             fw.write(address+"\n");
             fw.write(final_page);
             fw.flush();
@@ -340,9 +350,9 @@ class G_Market{
             System.out.println(e.toString());
         }
 
-        Category_Link.Shop_address.put(address, corp_name);
-        String string_image_folder = root + "/data/" + corp_name + "_image";
-        String string_resize_image_folder = root + "/data_160x160/" + corp_name + "_image";
+        GMarket_Category_Link.Shop_address.put(address, corp_name);
+        String string_image_folder = root + "/" + category + "/data/" + corp_name + "_image";
+        String string_resize_image_folder = root + "/" + category + "/data_160x160/" + corp_name + "_image";
         File data_validation = null;
         data_validation = new File(string_image_folder);
         if (!data_validation.exists()) {
@@ -365,7 +375,7 @@ class G_Market{
                 if(img_src_url.length()> 0){
                     shop_title = shop_title.replaceAll("\\p{Z}", "");
                     shop_title = shop_title.trim();
-                    getImages(string_image_folder, string_resize_image_folder, img_src_url, idx);
+                    getImages(shop_id , string_image_folder, string_resize_image_folder, img_src_url, idx);
                     idx++;
                 }
             }
@@ -571,7 +581,7 @@ class G_Market{
                     shop_title = shop_title.replaceAll("\\p{Z}", "");
                     shop_title = shop_title.trim();
 
-                    getImages(string_image_folder, string_resize_image_folder, src, idx);
+                    getImages(1, string_image_folder, string_resize_image_folder, src, idx);
                     idx++;
                 }
 
@@ -596,7 +606,7 @@ class G_Market{
         }
     }
 
-    private void Item_Review(String string_image_folder, String goodscode) {
+    private void Item_Review(int shop_id, String string_image_folder, String goodscode) {
         try {
            for (int page_no = 1; ; page_no++) {
                 String review_address = "http://mitem.gmarket.co.kr/Review/PhotoReview?goodscode=" + goodscode + "&page_no=" + page_no;
@@ -648,6 +658,12 @@ class G_Market{
                         }
                         fw.write(review_detail_review + "\n");
                         fw.flush();
+
+//                        DBConfig dbconfig = new DBConfig();
+//                        int check = dbconfig.CHECK_EXIST_REVIEW(shop_id, review_detail_review);
+//                        if(check == 0) {
+//                            dbconfig.INSERT_REVIEW_TABLE(shop_id, review_detail_review);
+//                        }
                     }
                 }
                 fw.close();
@@ -740,7 +756,7 @@ class G_Market{
         return 0;
     }
 
-    private void getImages(String local_source_Storage_path, String local_target_Storage_path, String src, int idx)
+    private void getImages(int shop_id, String local_source_Storage_path, String local_target_Storage_path, String src, int idx)
     {
         try {
             String folder = null;
@@ -760,22 +776,32 @@ class G_Market{
             InputStream in = url.openStream();
             local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");
             name = name.replace("/", "");
-            if (src.indexOf(".jpg") > 0) {
-                OutputStream out = new BufferedOutputStream(new FileOutputStream(local_source_Storage_path + "/" + name));
-                for (int b; (b = in.read()) != -1; ) {
-                    out.write(b);
+            String full_image_path = local_source_Storage_path + "/" + name;
+            String resize_image_path = local_target_Storage_path + "/" + name;
+            File image_path = new File(full_image_path);
+//            DBConfig dbwork = new DBConfig();
+//            int check = dbwork.CHECK_IMAGE_TABLE(shop_id, name);
+            if(image_path.exists()==false) {
+                if (src.indexOf(".jpg") > 0) {
+
+                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                    for (int b; (b = in.read()) != -1; ) {
+                        out.write(b);
+                    }
+                    out.close();
+                    in.close();
+
+                    resize_image(full_image_path, resize_image_path);
+                } else if (src.indexOf(".gif") > 0) {
+                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                    for (int b; (b = in.read()) != -1; ) {
+                        out.write(b);
+                    }
+                    out.close();
+                    in.close();
+                    resize_image(local_source_Storage_path + "/" + name, resize_image_path);
                 }
-                out.close();
-                in.close();
-                resize_image(local_source_Storage_path + "/" + name, local_target_Storage_path + "/" + name);
-            } else if (src.indexOf(".gif") > 0) {
-                OutputStream out = new BufferedOutputStream(new FileOutputStream(local_source_Storage_path + "/" + name));
-                for (int b; (b = in.read()) != -1; ) {
-                    out.write(b);
-                }
-                out.close();
-                in.close();
-                resize_image(local_source_Storage_path + "/" + name, local_target_Storage_path + "/" + name);
+//                dbwork.INSERT_IMAGE_TABLE(shop_id,name, full_image_path,resize_image_path );
             }
         } catch (Exception e) {
             System.out.println(e.toString());

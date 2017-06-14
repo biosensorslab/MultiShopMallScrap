@@ -11,8 +11,12 @@ public class Online_mall {
 
 		List<String> scap_address = new ArrayList<String>();
 		System.out.println("Start main method.");
-		G_Market_LinkHandler linkHandler = new G_Market_LinkHandler();
+
+		GMarket_LinkHandler linkHandler = new GMarket_LinkHandler();
 		linkHandler.run();
+
+//		Amazone_LinkHandler amazone_linkHandler = new Amazone_LinkHandler();
+//		amazone_linkHandler.run();
 		System.out.println("Multi thread Data scrap finished");
 	}
 }

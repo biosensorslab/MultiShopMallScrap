@@ -2,21 +2,24 @@ package com.prism.Product_Finder;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.UnsupportedEncodingException;
 import java.rmi.ConnectIOException;
 import java.sql.*;
 
 /*
+CREATE DATABASE shop_image_database DEFAULT CHARACTER SET utf8
+
 ****shop table ***
 CREATE TABLE SHOP_TABLE(
 SHOP_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 CATEGORY VARCHAR(255) NOT NULL,
-SHOW_NAME VARCHAR(255) NOT NULL,
-URL VARCHAR(255) NOT NULL,
+SHOP_NAME VARCHAR(255) NOT NULL,
+URL mediumtext NOT NULL,
 HTML mediumtext NOT NULL,
 PARSING_STATUS INT(10) unsigned NOT NULL,
 SCRP_DATE datetime,
 PRIMARY KEY (SHOP_ID)
-)
+)CHARACTER SET utf8;
 */
 public class DBConfig {
 	public static String DATABASE_NAME = "MYSQL";
@@ -25,7 +28,8 @@ public class DBConfig {
 	public String db_port = "3306";
 	private String db_name = "shop_image_database";
 	private String db_user = "root";
-	private String db_pwd = "";
+	private String db_pwd = "zx82qm73";
+
 
 	public void INSERT_SHOP_TABLE(String CATEGORY,
 								  String SHOP_NAME,
@@ -44,19 +48,42 @@ public class DBConfig {
 				Class.forName("org.gjt.mm.mysql.Driver");
 				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
 			}
-
+//			String [] charSet = {"utf-8","euc-kr","ksc5601","iso-8859-1","x-windows-949"};
+//
+//			for (int i=0; i<charSet.length; i++) {
+//				for (int j=0; j<charSet.length; j++) {
+//					try {
+//						System.out.println("[" + charSet[i] +"," + charSet[j] +"] = " + new String(SHOP_NAME.getBytes(charSet[i]), charSet[j]));
+//					} catch (UnsupportedEncodingException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
 			stmt = con.createStatement();
 			String sql = "";
+//			sql += "INSERT INTO SHOP_TABLE ";
+//			sql += "(CATEGORY, SHOP_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE)";
+//			sql += "VALUES ( ";
+//			sql += "'" + CATEGORY+"',";
+//			sql += "'" + SHOP_NAME+"',";
+//			sql += "'" + URL+"',";
+//			sql += "'--',";
+//			sql += parse_status+",";
+//			sql += "'" + SCRP_DATE+"')";
+
 			sql += "INSERT INTO SHOP_TABLE ";
-			sql += "(CATEGORY, SHOW_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE)";
+			sql += "(CATEGORY, SHOP_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE)";
 			sql += "VALUES ( ";
-			sql += "'" + CATEGORY+"',";
-			sql += "'" + SHOP_NAME+"',";
+			sql += "'아쿠아슈즈',"+"";
+			sql += "'(주)롯데닷컴',"+"";
 			sql += "'" + URL+"',";
 			sql += "'--',";
 			sql += parse_status+",";
 			sql += "'" + SCRP_DATE+"')";
+
+			System.out.println(sql);
 			stmt.executeUpdate(sql);
+
 
 			stmt.close();
 			con.close();
@@ -134,7 +161,7 @@ public class DBConfig {
 	/****REVIEW table ***
 	CREATE TABLE REVIEW_TABLE(
 	 SHOP_ID bigint(20) unsigned NOT NULL,
-	REVIEW mediumtext NOT NULL)
+	REVIEW mediumtext NOT NULL)CHARACTER SET utf8;
 	*/
 	public void INSERT_REVIEW_TABLE(int SHOP_ID,
 								  String REVIEW)
@@ -232,7 +259,7 @@ public class DBConfig {
 	IMAGE_NAME VARCHAR(40),
 	Full_IMAGE_BINARY MEDIUMBLOB,
 	Resize_IMAGE_BINARY MEDIUMBLOB
-	);
+	)CHARACTER SET utf8;
 	*/
 	public void INSERT_IMAGE_TABLE(int SHOP_ID,
 									String image_name,

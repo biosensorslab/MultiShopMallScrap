@@ -15,7 +15,9 @@ import org.jsoup.select.Elements;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -289,18 +291,37 @@ class GMarket{
             }
         }
 
-//        DBConfig dbwork = new DBConfig();
+
         java.util.Date dt = new java.util.Date();
 
         java.text.SimpleDateFormat sdf =
                 new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         String currentTime = sdf.format(dt);
+
+        if(!Shop_AddressTable.Map_ShopAddress.containsKey(corp_name))
+        {
+            Shop_AddressTable.Map_ShopAddress.put(corp_name, address);
+        }
+        if(!Shop_CategoryTable.Map_ShopCategory.containsKey(category))
+        {
+            List<String> listCorp = Shop_CategoryTable.Map_ShopCategory.get(category);
+            if(!listCorp.contains(corp_name))
+                listCorp.add(corp_name);
+
+        }
+
         int shop_id = -1;
-//        if(corp_name.length() > 1)
-//            dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 1, currentTime );
-//        else
-//            dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 0, currentTime );
+//        DBConfig dbwork = new DBConfig();
+//        if(corp_name.length() > 1) {
+//            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
+//            if(id == -1)
+//            dbwork.INSERT_SHOP_TABLE(category, corp_name, address, final_page, 1, currentTime);
+//        }else{
+//            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
+//            if(id == -1)
+//                dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 0, currentTime );
+//        }
 
 //        shop_id = dbwork.GET_SHOP_ID(category,corp_name, address);
 

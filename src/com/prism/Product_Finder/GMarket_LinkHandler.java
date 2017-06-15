@@ -80,14 +80,14 @@ class GMarket_LinkHandler implements Runnable{
             g_market = null;
             thread_web_get  = new Thread[ALL_Address_code.size()];
             ret = split(ALL_Address_code, 500);
-            for (int j = 0; j < ret.size(); j++)
+            for (int j = 0; j < 1; j++)
             {
                 System.out.println("Tree Scann Init:" + j + "/"  + ret.size());
                 GMarket_Reader obj_web_get = new GMarket_Reader(ret.get(j));
                 thread_web_get[j]  = new Thread(obj_web_get);
 //                thread_web_get[j].setDaemon(true);
             }
-            for (int j = 0; j < ret.size(); j++)
+            for (int j = 0; j < 1; j++)
             {
                 System.out.println("Tree Scann Start:" + j + "/"  + ret.size());
                 thread_web_get[j].start();

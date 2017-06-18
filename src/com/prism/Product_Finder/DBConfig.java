@@ -2,6 +2,7 @@ package com.prism.Product_Finder;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.UnsupportedEncodingException;
 import java.rmi.ConnectIOException;
 import java.sql.*;
@@ -15,7 +16,7 @@ SHOP_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 CATEGORY VARCHAR(255) NOT NULL,
 SHOP_NAME VARCHAR(255) NOT NULL,
 URL mediumtext NOT NULL,
-HTML mediumtext NOT NULL,
+HTML MEDIUMBLOB NOT NULL,
 PARSING_STATUS INT(10) unsigned NOT NULL,
 SCRP_DATE datetime,
 PRIMARY KEY (SHOP_ID)
@@ -46,7 +47,7 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 //			String [] charSet = {"utf-8","euc-kr","ksc5601","iso-8859-1","x-windows-949"};
 //
@@ -59,34 +60,45 @@ public class DBConfig {
 //					}
 //				}
 //			}
+			FileWriter fw = new FileWriter("/tmp/" + SHOP_NAME+"_html.txt");
+			fw.write(html+"\n");
+			fw.flush();
+			fw.close();
+
+			File Full_file = new File("/tmp/" + SHOP_NAME+"_html.txt");
+			FileInputStream Full_inputStream= new FileInputStream(Full_file);
+
 			stmt = con.createStatement();
-			String sql = "";
+
+			PreparedStatement statement = con.prepareStatement("INSERT INTO SHOP_TABLE (CATEGORY, SHOP_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE) VALUES (?,?,?,?,?,?)");
+
+			statement.setString(1, CATEGORY);
+			statement.setString(2, SHOP_NAME);
+			statement.setString(3, URL);
+			statement.setBlob(4, Full_inputStream);
+			statement.setInt(5, parse_status);
+			statement.setString(6, SCRP_DATE);
+			statement.executeUpdate();
+
 //			sql += "INSERT INTO SHOP_TABLE ";
 //			sql += "(CATEGORY, SHOP_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE)";
 //			sql += "VALUES ( ";
-//			sql += "'" + CATEGORY+"',";
-//			sql += "'" + SHOP_NAME+"',";
+//			sql += "'아쿠아슈즈',"+"";
+//			sql += "'(주)롯데닷컴',"+"";
 //			sql += "'" + URL+"',";
 //			sql += "'--',";
 //			sql += parse_status+",";
 //			sql += "'" + SCRP_DATE+"')";
-
-			sql += "INSERT INTO SHOP_TABLE ";
-			sql += "(CATEGORY, SHOP_NAME, URL, HTML, PARSING_STATUS, SCRP_DATE)";
-			sql += "VALUES ( ";
-			sql += "'아쿠아슈즈',"+"";
-			sql += "'(주)롯데닷컴',"+"";
-			sql += "'" + URL+"',";
-			sql += "'--',";
-			sql += parse_status+",";
-			sql += "'" + SCRP_DATE+"')";
-
-			System.out.println(sql);
-			stmt.executeUpdate(sql);
-
-
-			stmt.close();
+//			System.out.println(sql);
+//			stmt.executeUpdate(sql);
+//			stmt.close();
+//			con.close();
+			Full_inputStream.close();
+			statement.close();
 			con.close();
+
+			File html_file = new File("/tmp/" + SHOP_NAME+"_html.txt");
+			html_file.delete();
 
 		}
 		catch(ClassNotFoundException cnfe)
@@ -118,7 +130,7 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 
 			stmt = con.createStatement();
@@ -174,7 +186,7 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 
 			stmt = con.createStatement();
@@ -219,7 +231,7 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 
 			stmt = con.createStatement();
@@ -275,7 +287,7 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 			File Full_file = new File(Full_IMAGE);
 			FileInputStream Full_inputStream= new FileInputStream(Full_file);
@@ -284,6 +296,7 @@ public class DBConfig {
 			FileInputStream Resize_inputStream= new FileInputStream(Resize_file);
 
 			PreparedStatement statement = con.prepareStatement("INSERT INTO IMAGE_TABLE (SHOP_ID, IMAGE_NAME, Full_IMAGE_BINARY, Resize_IMAGE_BINARY) VALUES (?,?,?,?)");
+
 			statement.setInt(1, SHOP_ID);
 			statement.setString(2, image_name);
 			statement.setBlob(3, Full_inputStream);
@@ -292,9 +305,12 @@ public class DBConfig {
 			Resize_inputStream.close();
 			Full_inputStream.close();
 
-			stmt.close();
+			statement.close();
 			con.close();
 
+			//TEMPORY FILE REMOVE
+			Full_file.delete();
+			Resize_file.delete();
 		}
 		catch(ClassNotFoundException cnfe)
 		{
@@ -323,13 +339,17 @@ public class DBConfig {
 			if(DBConfig.DATABASE_NAME.equals("MYSQL") == true)
 			{
 				Class.forName("org.gjt.mm.mysql.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name , db_user, db_pwd);
+				con = DriverManager.getConnection("jdbc:mysql://"+db_address + ":" + db_port +"/" +db_name +"?useUnicode=true&characterEncoding=utf-8" , db_user, db_pwd);
 			}
 
 			stmt = con.createStatement();
 			String sql = "";
 			sql += "SELECT SHOP_ID FROM IMAGE_TABLE ";
 			sql += " WHERE SHOP_ID ="+ SHOP_ID + " AND IMAGE_NAME = '" + image_name +"'";
+			if(SHOP_ID == 2821)
+			{
+				System.out.println("2821");
+			}
 			rs = stmt.executeQuery(sql);
 			if(rs.next())
 			{

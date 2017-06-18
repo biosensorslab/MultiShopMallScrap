@@ -57,18 +57,15 @@ class GMarket{
         try {
             String address = "http://www.gmarket.co.kr/";
             Document doc = Jsoup.connect(address).get();
-//            System.out.println(doc.toString());
+
             Elements elements1 = doc.select("div.smenu div.cate_wrap");
             int img_idx = 0;
             int category_idx = 0;
             for (Element element : elements1) {
-//				System.out.println("ELEMENT:" + element.toString());
                 Elements element_LINK = element.select("a");
                 for (Element link_address : element_LINK) {
-//					System.out.println("Main Category Title:" + link_address.text());
-//					System.out.println("Main Category Address:" + link_address.attr("href"));
-
                     String title = link_address.text();
+                    System.out.println("category:" + title);
                     String http_address = link_address.attr("href");
                     if (http_address.contains("http://") == true) {
                         category_address.put(category_idx + ":" + title, http_address);
@@ -196,7 +193,7 @@ class GMarket{
             try {
                 webClient = new WebClient(BrowserVersion.CHROME);
                 webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-//            webClient.getOptions().setCssEnabled(true);
+            webClient.getOptions().setCssEnabled(true);
                 webClient.getOptions().setDoNotTrackEnabled(true);
                 webClient.getOptions().setMaxInMemory(10000);
                 webClient.getOptions().setJavaScriptEnabled(true);
@@ -299,11 +296,18 @@ class GMarket{
 
         String currentTime = sdf.format(dt);
 
-        if(!Shop_AddressTable.Map_ShopAddress.containsKey(corp_name))
-        {
-            Shop_AddressTable.Map_ShopAddress.put(corp_name, address);
-        }
+        //상점과 주소 저장
+        Shop_AddressTable.Map_ShopAddress.put(corp_name, address);
+
+        //카테고리에 상점 저장.
         if(!Shop_CategoryTable.Map_ShopCategory.containsKey(category))
+        {
+            List<String> listCorp = new ArrayList<String>();
+            listCorp.add(corp_name);
+            Shop_CategoryTable.Map_ShopCategory.put(category, listCorp);
+
+        }
+        else
         {
             List<String> listCorp = Shop_CategoryTable.Map_ShopCategory.get(category);
             if(!listCorp.contains(corp_name))
@@ -312,18 +316,18 @@ class GMarket{
         }
 
         int shop_id = -1;
-//        DBConfig dbwork = new DBConfig();
-//        if(corp_name.length() > 1) {
-//            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
-//            if(id == -1)
-//            dbwork.INSERT_SHOP_TABLE(category, corp_name, address, final_page, 1, currentTime);
-//        }else{
-//            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
-//            if(id == -1)
-//                dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 0, currentTime );
-//        }
+        DBConfig dbwork = new DBConfig();
+        if(corp_name.length() > 1) {
+            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
+            if(id == -1)
+            dbwork.INSERT_SHOP_TABLE(category, corp_name, address, final_page, 1, currentTime);
+        }else{
+            int id = dbwork.GET_SHOP_ID(category, corp_name, address);
+            if(id == -1)
+                dbwork.INSERT_SHOP_TABLE(category, corp_name,address,final_page, 2, currentTime );
+        }
 
-//        shop_id = dbwork.GET_SHOP_ID(category,corp_name, address);
+        shop_id = dbwork.GET_SHOP_ID(category,corp_name, address);
 
         Elements tags_review = doc_esm.select("span[data-goodscode]");
         String goodscode ="";
@@ -354,7 +358,8 @@ class GMarket{
 
         Item_Review(shop_id, root + "/" + category +"/review/" + corp_name, goodscode);
 
-        try {
+        try
+        {
             file = new File(root + "/" + category +  "/html/");
             if(!file.exists())
             {
@@ -372,8 +377,9 @@ class GMarket{
         }
 
         GMarket_Category_Link.Shop_address.put(address, corp_name);
-        String string_image_folder = root + "/" + category + "/data/" + corp_name + "_image";
-        String string_resize_image_folder = root + "/" + category + "/data_160x160/" + corp_name + "_image";
+        //Get_Main_Image
+        String string_image_folder = root + "/" + category + "/data/" + shop_id +"_" + corp_name + "_image";
+        String string_resize_image_folder = root + "/" + category + "/data_160x160/" + shop_id + "_" + corp_name + "_image";
         File data_validation = null;
         data_validation = new File(string_image_folder);
         if (!data_validation.exists()) {
@@ -385,7 +391,6 @@ class GMarket{
         }
         Elements image_tags = doc_esm.select("ul.viewer");
         int idx = 0;
-        System.out.println(image_tags.toString());
         for (Element image_tag : image_tags){
             for(Element li_image: image_tag.select("li.on"))
             {
@@ -394,17 +399,79 @@ class GMarket{
                 System.out.println(img_src_url);
 
                 if(img_src_url.length()> 0){
-                    shop_title = shop_title.replaceAll("\\p{Z}", "");
-                    shop_title = shop_title.trim();
+//                    shop_title = shop_title.replaceAll("\\p{Z}", "");
+//                    shop_title = shop_title.trim();
                     getImages(shop_id , string_image_folder, string_resize_image_folder, img_src_url, idx);
                     idx++;
                 }
             }
         }
+        //get iFrame content
 
-        System.out.println("FINISHED");
+        System.out.println("address:" + address);
+        Elements es = doc_esm.select("iframe[id=detail1]");
+        String[] iframesrc;
+        int iframeCount = es.size();
+        iframesrc = new String [iframeCount];
+        Document[] iframeDoc = null;
+        if(iframeCount > 0) {
+            //extract iFrame sources:
+            try{
+                int i = 0;
+                for (Element e : es) {
+                    iframesrc[i] = e.getElementsByTag("iframe").attr("src");
+                    i++;
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            try{
+                iframeDoc = new Document[iframeCount];
+                int j = 0;
+                for (String s : iframesrc) {
+                    System.out.println(s);
+                    if (s.contains("about:blank"))
+                        continue;
+                    System.out.println("IFrame address:" + s);
+                    iframeDoc[j] = Jsoup.connect(iframesrc[j]).get();
+                    Detail_Image(root, category, shop_id, corp_name, iframeDoc[j]);
+                    j++;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
     }
+    private void Detail_Image(String root, String category, int shop_id, String corp_name, Document document)
+    {
+        String string_detail_image_folder = root + "/" + category + "/data_detail/" +  shop_id +"_"  + corp_name + "_image";
+        String string_detail_160ximage_folder = root + "/" + category + "/data_detail_160x160/" + shop_id +"_" +  corp_name + "_image";
 
+        File data_validation = null;
+        data_validation = new File(string_detail_image_folder);
+        if (!data_validation.exists()) {
+            data_validation.mkdirs();
+        }
+        data_validation = new File(string_detail_160ximage_folder);
+        if (!data_validation.exists()) {
+            data_validation.mkdirs();
+        }
+
+        Elements elements = document.select("div.vip-detailarea_seller");
+        for(Element element: elements)
+        {
+            String strElement = element.toString();
+
+            Elements images = element.select("img");
+            for(Element image: images)
+            {
+                String img_src_url = image.absUrl("src");
+                System.out.println("img urlL:" + img_src_url);
+                getDetailImages(shop_id , string_detail_image_folder, string_detail_160ximage_folder, img_src_url);
+            }
+        }
+    }
     private String shop_size(String review_detail_review) {
 
         String spec = "";
@@ -680,11 +747,11 @@ class GMarket{
                         fw.write(review_detail_review + "\n");
                         fw.flush();
 
-//                        DBConfig dbconfig = new DBConfig();
-//                        int check = dbconfig.CHECK_EXIST_REVIEW(shop_id, review_detail_review);
-//                        if(check == 0) {
-//                            dbconfig.INSERT_REVIEW_TABLE(shop_id, review_detail_review);
-//                        }
+                        DBConfig dbconfig = new DBConfig();
+                        int check = dbconfig.CHECK_EXIST_REVIEW(shop_id, review_detail_review);
+                        if(check == 0) {
+                            dbconfig.INSERT_REVIEW_TABLE(shop_id, review_detail_review);
+                        }
                     }
                 }
                 fw.close();
@@ -796,13 +863,14 @@ class GMarket{
             URL url = new URL(src);
             InputStream in = url.openStream();
             local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");
-            name = name.replace("/", "");
+
+            name = "M_" + name.replace("/", "");
             String full_image_path = local_source_Storage_path + "/" + name;
             String resize_image_path = local_target_Storage_path + "/" + name;
             File image_path = new File(full_image_path);
-//            DBConfig dbwork = new DBConfig();
-//            int check = dbwork.CHECK_IMAGE_TABLE(shop_id, name);
-            if(image_path.exists()==false) {
+            DBConfig dbwork = new DBConfig();
+            int check = dbwork.CHECK_IMAGE_TABLE(shop_id, full_image_path);
+            if(check == 0) {
                 if (src.indexOf(".jpg") > 0) {
 
                     OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
@@ -822,7 +890,59 @@ class GMarket{
                     in.close();
                     resize_image(local_source_Storage_path + "/" + name, resize_image_path);
                 }
-//                dbwork.INSERT_IMAGE_TABLE(shop_id,name, full_image_path,resize_image_path );
+                dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    private void getDetailImages(int shop_id, String local_source_Storage_path, String local_target_Storage_path, String src)
+    {
+        try {
+            String folder = null;
+
+            //Exctract the name of the image from the src attribute
+            int indexname = src.lastIndexOf("/");
+            if (indexname == src.length()) {
+                src = src.substring(1, indexname);
+            }
+            indexname = src.lastIndexOf("/");
+            String name = src.substring(indexname, src.length());
+            if (skeep_file_name(name) == 1) {
+                return;
+            }
+            //Open a URL Stream
+            URL url = new URL(src);
+            InputStream in = url.openStream();
+            local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");
+
+            name = "D_" + name.replace("/", "");
+            String full_image_path = local_source_Storage_path + "/" + name;
+            String resize_image_path = local_target_Storage_path + "/" + name;
+            File image_path = new File(full_image_path);
+            DBConfig dbwork = new DBConfig();
+            int check = dbwork.CHECK_IMAGE_TABLE(shop_id, full_image_path);
+            if(check == 0) {
+                if (src.indexOf(".jpg") > 0) {
+
+                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                    for (int b; (b = in.read()) != -1; ) {
+                        out.write(b);
+                    }
+                    out.close();
+                    in.close();
+
+                    resize_image(full_image_path, resize_image_path);
+                } else if (src.indexOf(".gif") > 0) {
+                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                    for (int b; (b = in.read()) != -1; ) {
+                        out.write(b);
+                    }
+                    out.close();
+                    in.close();
+                    resize_image(local_source_Storage_path + "/" + name, resize_image_path);
+                }
+                dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
             }
         } catch (Exception e) {
             System.out.println(e.toString());

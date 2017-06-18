@@ -53,41 +53,27 @@ class GMarket_LinkHandler implements Runnable{
             HashMap<String, String> HashMap_Main_Sub1 = null;
             Thread[] thread_web_get  =  null;
             String full_depth = "";
-//            for( String category_name : main_category.keySet()) {
-//                System.out.println("Main Catetorys:" + category_name);
-//            }
             for( String address_map : main_category.keySet()) {
-                System.out.println("Main:" + address_map + ":" + main_category.get(address_map));
+//                System.out.print("Main:" + address_map);
                 HashMap<String, String> Main_Sub1 = g_market.Main_Sub1_Cateory(main_category.get(address_map));
                 for (String sub_address_map : Main_Sub1.keySet()){
                     full_depth = sub_address_map + "\u9999" + Main_Sub1.get(sub_address_map);
                     if (ALL_Address_code.contains(full_depth)== false) {
                         ALL_Address_code.add(full_depth);
-                        System.out.println("-Sub1:" + sub_address_map + ":" + Main_Sub1.get(sub_address_map));
                     }
-//                    HashMap<String, String> Main_Sub2 = g_market.Main_Sub2_Cateory(Main_Sub1.get(sub_address_map));
-//                    for (String sub2_address_map : Main_Sub2.keySet()) {
-//                        System.out.println("-Sub2:" + sub2_address_map + ":" + Main_Sub2.get(sub2_address_map));
-//						g_market.Dept_3_FullStore( sub2_address_map, Main_Sub2.get(sub2_address_map));
-//						for (String key : Category_Link.Shop_address.keySet()) {
-//							System.out.println(String.format("Address : %s, Name : %s", key, Category_Link.Shop_address.get(key)));
-//
-//							Category_Link.Shop_address.clear();
-//						}
-//                    }
                 }
             }
             g_market = null;
             thread_web_get  = new Thread[ALL_Address_code.size()];
             ret = split(ALL_Address_code, 500);
-            for (int j = 0; j < 1; j++)
+            for (int j = 0; j < ret.size(); j++)
             {
                 System.out.println("Tree Scann Init:" + j + "/"  + ret.size());
                 GMarket_Reader obj_web_get = new GMarket_Reader(ret.get(j));
                 thread_web_get[j]  = new Thread(obj_web_get);
 //                thread_web_get[j].setDaemon(true);
             }
-            for (int j = 0; j < 1; j++)
+            for (int j = 0; j < ret.size(); j++)
             {
                 System.out.println("Tree Scann Start:" + j + "/"  + ret.size());
                 thread_web_get[j].start();

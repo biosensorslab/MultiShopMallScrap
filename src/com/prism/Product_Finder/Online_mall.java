@@ -15,8 +15,6 @@ public class Online_mall {
 		GMarket_LinkHandler linkHandler = new GMarket_LinkHandler();
 		linkHandler.run();
 
-//		Amazone_LinkHandler amazone_linkHandler = new Amazone_LinkHandler();
-//		amazone_linkHandler.run();
 		System.out.println("Multi thread Data scrap finished");
 	}
 }

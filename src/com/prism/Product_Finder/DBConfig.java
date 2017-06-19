@@ -25,10 +25,10 @@ PRIMARY KEY (SHOP_ID)
 public class DBConfig {
 	public static String DATABASE_NAME = "MYSQL";
 //	public static String DATABASE_NAME = "ORACLE";
-	public String db_address = "localhost";
+	public String db_address = "106.245.232.34";
 	public String db_port = "3306";
 	private String db_name = "shop_image_database";
-	private String db_user = "root";
+	private String db_user = "whitepoo";
 	private String db_pwd = "zx82qm73";
 
 

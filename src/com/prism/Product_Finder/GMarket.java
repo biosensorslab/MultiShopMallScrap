@@ -314,7 +314,8 @@ class GMarket{
                 listCorp.add(corp_name);
 
         }
-
+        corp_name  = corp_name.replace("&", "and");
+        category  = category.replace("&", "and");
         int shop_id = -1;
         DBConfig dbwork = new DBConfig();
         if(corp_name.length() > 1) {
@@ -354,7 +355,7 @@ class GMarket{
         File file = null;
 
         //***Get item review
-        category = category.replace("/" , "&");
+        category = category.replace("/" , "and");
 
         Item_Review(shop_id, root + "/" + category +"/review/" + corp_name, goodscode);
 
@@ -445,8 +446,12 @@ class GMarket{
     }
     private void Detail_Image(String root, String category, int shop_id, String corp_name, Document document)
     {
+        category = category.replace("&", "and");
+        corp_name = corp_name.replace("&", "and");
+
         String string_detail_image_folder = root + "/" + category + "/data_detail/" +  shop_id +"_"  + corp_name + "_image";
         String string_detail_160ximage_folder = root + "/" + category + "/data_detail_160x160/" + shop_id +"_" +  corp_name + "_image";
+
 
         File data_validation = null;
         data_validation = new File(string_detail_image_folder);
@@ -467,7 +472,7 @@ class GMarket{
             for(Element image: images)
             {
                 String img_src_url = image.absUrl("src");
-                System.out.println("img urlL:" + img_src_url);
+                System.out.println("img url:" + img_src_url);
                 getDetailImages(shop_id , string_detail_image_folder, string_detail_160ximage_folder, img_src_url);
             }
         }
@@ -846,58 +851,68 @@ class GMarket{
 
     private void getImages(int shop_id, String local_source_Storage_path, String local_target_Storage_path, String src, int idx)
     {
+
+        String folder = null;
+
+        //Exctract the name of the image from the src attribute
+        int indexname = src.lastIndexOf("/");
+        if (indexname == src.length()) {
+            src = src.substring(1, indexname);
+        }
+        indexname = src.lastIndexOf("/");
+        String name = src.substring(indexname, src.length());
+        if (skeep_file_name(name) == 1) {
+            return;
+        }
+        //Open a URL Stream
+        InputStream in = null;
         try {
-            String folder = null;
-
-            //Exctract the name of the image from the src attribute
-            int indexname = src.lastIndexOf("/");
-            if (indexname == src.length()) {
-                src = src.substring(1, indexname);
-            }
-            indexname = src.lastIndexOf("/");
-            String name = src.substring(indexname, src.length());
-            if (skeep_file_name(name) == 1) {
-                return;
-            }
-            //Open a URL Stream
             URL url = new URL(src);
-            InputStream in = url.openStream();
+            in = url.openStream();
             local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");
+            try {
+                name = "M_" + name.replace("/", "");
+                String full_image_path = local_source_Storage_path + "/" + name;
+                String resize_image_path = local_target_Storage_path + "/" + name;
 
-            name = "M_" + name.replace("/", "");
-            String full_image_path = local_source_Storage_path + "/" + name;
-            String resize_image_path = local_target_Storage_path + "/" + name;
-            File image_path = new File(full_image_path);
-            DBConfig dbwork = new DBConfig();
-            int check = dbwork.CHECK_IMAGE_TABLE(shop_id, full_image_path);
-            if(check == 0) {
-                if (src.indexOf(".jpg") > 0) {
+                File image_path = new File(full_image_path);
+                DBConfig dbwork = new DBConfig();
+                int check = dbwork.CHECK_IMAGE_TABLE(shop_id, full_image_path);
+                if(check == 0) {
+                    if (src.indexOf(".jpg") > 0) {
 
-                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
-                    for (int b; (b = in.read()) != -1; ) {
-                        out.write(b);
+                        OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                        for (int b; (b = in.read()) != -1; ) {
+                            out.write(b);
+                        }
+                        out.close();
+                        in.close();
+
+                        resize_image(full_image_path, resize_image_path);
+                    } else if (src.indexOf(".gif") > 0) {
+                        OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
+                        for (int b; (b = in.read()) != -1; ) {
+                            out.write(b);
+                        }
+                        out.close();
+                        in.close();
+                        resize_image(local_source_Storage_path + "/" + name, resize_image_path);
                     }
-                    out.close();
-                    in.close();
-
-                    resize_image(full_image_path, resize_image_path);
-                } else if (src.indexOf(".gif") > 0) {
-                    OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
-                    for (int b; (b = in.read()) != -1; ) {
-                        out.write(b);
-                    }
-                    out.close();
-                    in.close();
-                    resize_image(local_source_Storage_path + "/" + name, resize_image_path);
+                    dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
                 }
-                dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
+            } catch (Exception e) {
+                System.out.println(e.toString());
             }
+            in = null;
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+
     }
     private void getDetailImages(int shop_id, String local_source_Storage_path, String local_target_Storage_path, String src)
     {
+        String full_image_path = "";
+        String resize_image_path = "";
         try {
             String folder = null;
 
@@ -915,10 +930,14 @@ class GMarket{
             URL url = new URL(src);
             InputStream in = url.openStream();
             local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");
-
             name = "D_" + name.replace("/", "");
-            String full_image_path = local_source_Storage_path + "/" + name;
-            String resize_image_path = local_target_Storage_path + "/" + name;
+
+            full_image_path = local_source_Storage_path + "/" + name;
+            resize_image_path = local_target_Storage_path + "/" + name;
+            if(local_source_Storage_path.indexOf("&") > 0)
+            {
+                System.out.println("Warning");
+            }
             File image_path = new File(full_image_path);
             DBConfig dbwork = new DBConfig();
             int check = dbwork.CHECK_IMAGE_TABLE(shop_id, full_image_path);
@@ -933,6 +952,7 @@ class GMarket{
                     in.close();
 
                     resize_image(full_image_path, resize_image_path);
+                    dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
                 } else if (src.indexOf(".gif") > 0) {
                     OutputStream out = new BufferedOutputStream(new FileOutputStream(full_image_path));
                     for (int b; (b = in.read()) != -1; ) {
@@ -941,8 +961,8 @@ class GMarket{
                     out.close();
                     in.close();
                     resize_image(local_source_Storage_path + "/" + name, resize_image_path);
+                    dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
                 }
-                dbwork.INSERT_IMAGE_TABLE(shop_id, name, full_image_path, resize_image_path );
             }
         } catch (Exception e) {
             System.out.println(e.toString());

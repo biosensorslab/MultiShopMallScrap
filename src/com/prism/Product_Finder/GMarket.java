@@ -7,6 +7,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import net.coobird.thumbnailator.Thumbnails;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -35,21 +36,21 @@ class GMarket{
         System.out.println("G_Market_Object Created with " + argu);
     }
 
-    public void Dept_3_PowerClick() {
-        try {
-            String address = "http://category.gmarket.co.kr//listview/List.aspx?gdsc_cd=300019139&amp;ecp_gdlc=100000049&amp;ecp_gdmc=200000376%27";
-            Document doc = Jsoup.connect(address).get();
-            //
-            Elements elements = doc.select("div.store_info span.seller");
-            for (Element element : elements) {
-                String text = element.text();
-                System.out.println(text);
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+//    public void Dept_3_PowerClick() {
+//        try {
+//            String address = "http://category.gmarket.co.kr//listview/List.aspx?gdsc_cd=300019139&amp;ecp_gdlc=100000049&amp;ecp_gdmc=200000376%27";
+//            Document doc = Jsoup.connect(address).get();
+//            //
+//            Elements elements = doc.select("div.store_info span.seller");
+//            for (Element element : elements) {
+//                String text = element.text();
+//                System.out.println(text);
+//            }
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public HashMap<String, String> Main_Cateory() {
@@ -316,6 +317,11 @@ class GMarket{
         }
         corp_name  = corp_name.replace("&", "and");
         category  = category.replace("&", "and");
+
+        String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
+        corp_name =corp_name.replaceAll(match, "");
+        category =category.replaceAll(match, "");
+
         int shop_id = -1;
         DBConfig dbwork = new DBConfig();
         if(corp_name.length() > 1) {
@@ -861,12 +867,17 @@ class GMarket{
         }
         indexname = src.lastIndexOf("/");
         String name = src.substring(indexname, src.length());
-        if (skeep_file_name(name) == 1) {
-            return;
-        }
+
         //Open a URL Stream
         InputStream in = null;
         try {
+            UrlValidator urlValidator = new UrlValidator();
+            //valid URL
+            if (!urlValidator.isValid(src)) {
+                System.out.println("url is invalid");
+                return;
+            }
+
             URL url = new URL(src);
             in = url.openStream();
             local_source_Storage_path = local_source_Storage_path.replaceAll("&npsp;", "");

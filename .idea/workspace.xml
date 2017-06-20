@@ -7,24 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c412a53f-53e9-4330-bab8-c84b5331038e" name="Default" comment="Source code update">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.41-bin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/OnlineMallScrap_MutiThread_Git_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_41_bin.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Market_Reader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Reader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_Reader.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/G_Market_ConcreteRunnable.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/G_Market.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/G_Market_Category_Link.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_Category_Link.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/G_Market_LinkHandler.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-validator-1.4.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_validator_1_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OnlineMallScrap_MutiThread_Git.iml" afterPath="$PROJECT_DIR$/OnlineMallScrap_MutiThread_Git.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java" afterPath="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +23,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.32550335">
+    <splitter split-orientation="horizontal" split-proportion="0.19250986">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Online_mall.java" pinned="false" current-in-tab="false">
@@ -52,13 +39,9 @@
           <file leaf-file-name="GMarket_LinkHandler.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="687">
-                  <caret line="89" column="42" lean-forward="false" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
-                  <folding>
-                    <element signature="e#379#388#0" expanded="true" />
-                    <element signature="e#1491#1499#0" expanded="true" />
-                    <element signature="e#1647#1664#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="345">
+                  <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -66,22 +49,24 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.5935364">
+        <splitter split-orientation="horizontal" split-proportion="0.9">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="GMarket.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="629">
-                      <caret line="209" column="1" lean-forward="false" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
+                    <state relative-caret-position="112">
+                      <caret line="898" column="34" lean-forward="false" selection-start-line="898" selection-start-column="34" selection-end-line="898" selection-end-column="34" />
                       <folding>
-                        <element signature="e#725#742#0" expanded="true" />
-                        <element signature="e#805#822#0" expanded="true" />
-                        <element signature="e#878#895#0" expanded="true" />
-                        <element signature="e#1859#1875#0" expanded="true" />
-                        <element signature="e#3342#3358#0" expanded="true" />
-                        <element signature="e#4798#4814#0" expanded="true" />
-                        <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+                        <element signature="e#835#852#0" expanded="true" />
+                        <element signature="e#915#932#0" expanded="true" />
+                        <element signature="e#988#1005#0" expanded="true" />
+                        <element signature="e#1150#1151#0" expanded="true" />
+                        <element signature="e#1224#1225#0" expanded="true" />
+                        <element signature="e#1999#2015#0" expanded="true" />
+                        <element signature="e#3280#3296#0" expanded="true" />
+                        <element signature="e#4736#4752#0" expanded="true" />
+                        <element signature="e#11850#11858#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -94,8 +79,8 @@
               <file leaf-file-name="DBConfig.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="311">
-                      <caret line="103" column="12" lean-forward="false" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
+                    <state relative-caret-position="702">
+                      <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
                       <folding>
                         <element signature="imports" expanded="true" />
                       </folding>
@@ -121,6 +106,10 @@
       <find>plusStore2</find>
       <find>plusStore</find>
       <find>root</find>
+      <find>getDetailImages</find>
+      <find>Item_Review</find>
+      <find>Dept_3_PowerClick</find>
+      <find>Dept_3_FullStoreDept_3_FullStore</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,17 +136,17 @@
         <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone.java" />
         <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java" />
         <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_Reader.java" />
+        <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java" />
         <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java" />
         <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java" />
-        <option value="$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="23" />
-    <option name="y" value="55" />
-    <option name="width" value="1833" />
-    <option name="height" value="1072" />
+    <option name="x" value="-4" />
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="974" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -175,57 +164,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
+              <option name="myItemId" value="ShopMallScrap_Multi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
+              <option name="myItemId" value="ShopMallScrap_Multi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
+              <option name="myItemId" value="ShopMallScrap_Multi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Product_Finder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OnlineMallScrap_MutiThread_Git" />
+              <option name="myItemId" value="ShopMallScrap_Multi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -236,20 +195,22 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="onlinemallscrap_mutithread_git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/com/prism/Product_Finder" />
@@ -569,11 +530,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497256328891</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Source code update">
+      <created>1497872216790</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1497872216790</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="23" y="55" width="1833" height="1072" extended-state="0" />
+    <frame x="-4" y="23" width="1680" height="974" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -590,12 +558,12 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13529733" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09404762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26919243" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31491712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -623,42 +591,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java</url>
-          <line>316</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java</url>
-          <line>320</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java</url>
-          <line>324</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java</url>
-          <line>308</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java</url>
           <line>263</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java</url>
-          <line>299</line>
+          <line>914</line>
           <properties />
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java</url>
+          <line>877</line>
+          <properties />
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -677,28 +627,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="42" column="16" lean-forward="false" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="e#379#388#0" expanded="true" />
-            <element signature="e#1491#1499#0" expanded="true" />
-            <element signature="e#1647#1664#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="810">
+          <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11385">
-          <caret line="759" column="13" lean-forward="false" selection-start-line="759" selection-start-column="13" selection-end-line="759" selection-end-column="13" />
+        <state relative-caret-position="14445">
+          <caret line="963" column="39" lean-forward="false" selection-start-line="963" selection-start-column="39" selection-end-line="963" selection-end-column="39" />
           <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,44 +661,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Reader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="870">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3135">
+          <caret line="209" column="1" lean-forward="false" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_Reader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Market_Reader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        <state relative-caret-position="210">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="16" lean-forward="false" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11385">
+          <caret line="759" column="13" lean-forward="false" selection-start-line="759" selection-start-column="13" selection-end-line="759" selection-end-column="13" />
+          <folding>
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Reader.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Market_Reader.java" />
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -759,22 +786,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" column="46" lean-forward="true" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Online_mall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -788,7 +801,7 @@
         <state relative-caret-position="75">
           <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -797,11 +810,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="e#379#388#0" expanded="true" />
-            <element signature="e#1491#1499#0" expanded="true" />
-            <element signature="e#1647#1664#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -810,13 +819,15 @@
         <state relative-caret-position="405">
           <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="14" />
           <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -834,13 +845,15 @@
         <state relative-caret-position="1845">
           <caret line="123" column="46" lean-forward="false" selection-start-line="123" selection-start-column="46" selection-end-line="123" selection-end-column="46" />
           <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -858,13 +871,15 @@
         <state relative-caret-position="1845">
           <caret line="123" column="46" lean-forward="true" selection-start-line="123" selection-start-column="46" selection-end-line="123" selection-end-column="46" />
           <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -882,13 +897,15 @@
         <state relative-caret-position="1995">
           <caret line="133" column="56" lean-forward="true" selection-start-line="133" selection-start-column="56" selection-end-line="134" selection-end-column="31" />
           <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -909,50 +926,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Category_Link.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="87" lean-forward="true" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Market_Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="65" column="57" lean-forward="true" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Category_Link.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Market_Reader.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_LinkHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/Amazone_Reader.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -974,33 +952,17 @@
         <state relative-caret-position="378">
           <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/DBConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="103" column="12" lean-forward="false" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
+        <state relative-caret-position="702">
+          <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="209" column="1" lean-forward="false" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
-          <folding>
-            <element signature="e#725#742#0" expanded="true" />
-            <element signature="e#805#822#0" expanded="true" />
-            <element signature="e#878#895#0" expanded="true" />
-            <element signature="e#1859#1875#0" expanded="true" />
-            <element signature="e#3342#3358#0" expanded="true" />
-            <element signature="e#4798#4814#0" expanded="true" />
-            <marker date="1497436474000" expanded="false" signature="973:1000" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1015,12 +977,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket_LinkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="89" column="42" lean-forward="false" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+        <state relative-caret-position="345">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/prism/Product_Finder/GMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="898" column="34" lean-forward="false" selection-start-line="898" selection-start-column="34" selection-end-line="898" selection-end-column="34" />
           <folding>
-            <element signature="e#379#388#0" expanded="true" />
-            <element signature="e#1491#1499#0" expanded="true" />
-            <element signature="e#1647#1664#0" expanded="true" />
+            <element signature="e#835#852#0" expanded="true" />
+            <element signature="e#915#932#0" expanded="true" />
+            <element signature="e#988#1005#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1999#2015#0" expanded="true" />
+            <element signature="e#3280#3296#0" expanded="true" />
+            <element signature="e#4736#4752#0" expanded="true" />
+            <element signature="e#11850#11858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1109,7 +1085,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mysql-connector-java-5.1.41-bin</last-edited>
+          <last-edited>commons-validator-1.4.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -25,10 +25,10 @@ PRIMARY KEY (SHOP_ID)
 public class DBConfig {
 	public static String DATABASE_NAME = "MYSQL";
 //	public static String DATABASE_NAME = "ORACLE";
-	public String db_address = "localhost";
+	public String db_address = "210.123.118.98";
 	public String db_port = "3306";
 	private String db_name = "shop_image_database";
-	private String db_user = "prismdata";
+	private String db_user = "root";
 	private String db_pwd = "zx82qm73";
 
 
@@ -163,7 +163,7 @@ public class DBConfig {
 	/****REVIEW table ***
 	CREATE TABLE REVIEW_TABLE(
 	 SHOP_ID bigint(20) unsigned NOT NULL,
-	REVIEW mediumtext NOT NULL)CHARACTER SET utf8;
+	 REVIEW mediumtext NOT NULL)CHARACTER SET utf8;
 	*/
 	public void INSERT_REVIEW_TABLE(int SHOP_ID,
 								  String REVIEW)

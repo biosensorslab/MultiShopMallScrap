@@ -58,7 +58,7 @@ class GMarket{
         try {
             String address = "http://www.gmarket.co.kr/";
             Document doc = Jsoup.connect(address).get();
-
+//            System.out.println(doc.toString());
             Elements elements1 = doc.select("div.smenu div.cate_wrap");
             int img_idx = 0;
             int category_idx = 0;
@@ -66,11 +66,14 @@ class GMarket{
                 Elements element_LINK = element.select("a");
                 for (Element link_address : element_LINK) {
                     String title = link_address.text();
-                    System.out.println("category:" + title);
-                    String http_address = link_address.attr("href");
-                    if (http_address.contains("http://") == true) {
-                        category_address.put(category_idx + ":" + title, http_address);
-                        category_idx++;
+                    if(title.equals("신발")) {
+
+                        System.out.println("category:" + title);
+                        String http_address = link_address.attr("href");
+                        if (http_address.contains("http://") == true) {
+                            category_address.put(category_idx + ":" + title, http_address);
+                            category_idx++;
+                        }
                     }
                 }
 
@@ -194,7 +197,7 @@ class GMarket{
             try {
                 webClient = new WebClient(BrowserVersion.CHROME);
                 webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-            webClient.getOptions().setCssEnabled(true);
+                webClient.getOptions().setCssEnabled(true);
                 webClient.getOptions().setDoNotTrackEnabled(true);
                 webClient.getOptions().setMaxInMemory(10000);
                 webClient.getOptions().setJavaScriptEnabled(true);
@@ -258,7 +261,6 @@ class GMarket{
 
         boolean detected = false;
         for (Element s_info : seller_infos) {
-//            System.out.println(s_info.toString());
             Elements etype1 = s_info.select("dt");
             for(Element element : etype1)
             {
@@ -291,7 +293,6 @@ class GMarket{
 
 
         java.util.Date dt = new java.util.Date();
-
         java.text.SimpleDateFormat sdf =
                 new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -340,11 +341,10 @@ class GMarket{
         String goodscode ="";
         for(Element tag_review: tags_review)
         {
-            System.out.println(tag_review.html());
-            System.out.println(tag_review.text());
-            System.out.println(tag_review.toString());
+//            System.out.println(tag_review.html());
+//            System.out.println(tag_review.text());
+//            System.out.println(tag_review.toString());
             String good_html = tag_review.toString();
-//            good_html = good_html.replace(" ", "");
             good_html = good_html.replace(">", "");
             good_html = good_html.replace("\"", "");
             good_html = good_html.replace("<span", "");
@@ -354,7 +354,7 @@ class GMarket{
             if(code[0].equals("data-goodscode"))
             {
                 goodscode = code[1];
-                System.out.println(goodscode);
+//                System.out.println(goodscode);
                 break;
             }
         }
@@ -386,7 +386,7 @@ class GMarket{
         GMarket_Category_Link.Shop_address.put(address, corp_name);
         //Get_Main_Image
         String string_image_folder = root + "/" + category + "/data/" + shop_id +"_" + corp_name + "_image";
-        String string_resize_image_folder = root + "/" + category + "/data_160x160/" + shop_id + "_" + corp_name + "_image";
+        String string_resize_image_folder = root + "/" + category + "/data_227x227/" + shop_id + "_" + corp_name + "_image";
         File data_validation = null;
         data_validation = new File(string_image_folder);
         if (!data_validation.exists()) {
@@ -456,7 +456,7 @@ class GMarket{
         corp_name = corp_name.replace("&", "and");
 
         String string_detail_image_folder = root + "/" + category + "/data_detail/" +  shop_id +"_"  + corp_name + "_image";
-        String string_detail_160ximage_folder = root + "/" + category + "/data_detail_160x160/" + shop_id +"_" +  corp_name + "_image";
+        String string_detail_160ximage_folder = root + "/" + category + "/data_detail_227x227/" + shop_id +"_" +  corp_name + "_image";
 
 
         File data_validation = null;
@@ -822,7 +822,7 @@ class GMarket{
 
 
             Thumbnails.of(new File(source_path))
-                    .size(160, 160)
+                    .size(227, 227)
                     .toFile(new File(target_path));
 
         } catch (Exception e) {

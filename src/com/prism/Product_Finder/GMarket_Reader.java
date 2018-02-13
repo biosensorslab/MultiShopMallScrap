@@ -35,6 +35,7 @@ public class GMarket_Reader implements Runnable{
                         HashMap<String, String> Main_Sub2 = g_market.Main_Sub2_Cateory(sub_address_map);
                         for (String sub2_address_map : Main_Sub2.keySet()) {
                             System.out.println("-Sub2:" + sub2_address_map + ":" + Main_Sub2.get(sub2_address_map));
+                            //SSL 오규 구간.
                             g_market.Dept_3_FullStore(category_title, sub2_address_map, Main_Sub2.get(sub2_address_map));
                         }
                     }

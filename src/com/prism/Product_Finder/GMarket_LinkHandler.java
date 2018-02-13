@@ -45,7 +45,7 @@ class GMarket_LinkHandler implements Runnable{
     Remove thread logic
     Change to follow process
     1. Write address to hdfs
-    2. Get Web page using Hadoop Map function 
+    2. Get Web page using Hadoop Map function
      */
     public void run()
     {
@@ -58,35 +58,34 @@ class GMarket_LinkHandler implements Runnable{
             int address_idx = 0;
             HashMap<Integer, String> HashMap_store_map = new HashMap<Integer, String>();
             HashMap<String, String> HashMap_Main_Sub1 = null;
-//            Thread[] thread_web_get  =  null;
+            Thread[] thread_web_get  =  null;
             String full_depth = "";
-            for( String address_map : main_category.keySet())
-            {
+            for( String address_map : main_category.keySet()) {
+//                System.out.print("Main:" + address_map);
                 HashMap<String, String> Main_Sub1 = g_market.Main_Sub1_Cateory(main_category.get(address_map));
-                for (String sub_address_map : Main_Sub1.keySet())
-                {
+                for (String sub_address_map : Main_Sub1.keySet()){
                     full_depth = sub_address_map + "\u9999" + Main_Sub1.get(sub_address_map);
-                    if (ALL_Address_code.contains(full_depth)== false)
-                    {
+                    if (ALL_Address_code.contains(full_depth)== false) {
                         ALL_Address_code.add(full_depth);
                     }
                 }
             }
             g_market = null;
-
-//            thread_web_get  = new Thread[ALL_Address_code.size()];
-//            ret = split(ALL_Address_code, 500);
-//            for (int j = 0; j < ret.size(); j++)
-//            {
-//                System.out.println("Tree Scann Init:" + j + "/"  + ret.size());
-//                GMarket_Reader obj_web_get = new GMarket_Reader(ret.get(j));
-//                thread_web_get[j]  = new Thread(obj_web_get);
-//            }
-//            for (int j = 0; j < ret.size(); j++)
-//            {
-//                System.out.println("Tree Scann Start:" + j + "/"  + ret.size());
-//                thread_web_get[j].start();
-//            }
+            thread_web_get  = new Thread[ALL_Address_code.size()];
+            ret = split(ALL_Address_code, 500);
+            for (int j = 0; j < ret.size(); j++)
+            {
+                System.out.println("Tree Scann Init:" + j + "/"  + ret.size());
+                GMarket_Reader obj_web_get = new GMarket_Reader(ret.get(j));
+                thread_web_get[j]  = new Thread(obj_web_get);
+//                thread_web_get[j].setDaemon(true);
+            }
+            for (int j = 0; j < ret.size(); j++)
+//            for (int j = 0; j < 1; j++)
+            {
+                System.out.println("Tree Scann Start:" + j + "/"  + ret.size());
+                thread_web_get[j].start();
+            }
         }
         catch (Exception e)
         {

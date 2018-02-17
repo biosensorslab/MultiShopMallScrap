@@ -8,9 +8,7 @@ import java.util.List;
 public class Online_mall {
 	public static void main(String[] args) throws InterruptedException {
 
-
 		List<String> scap_address = new ArrayList<String>();
-		System.out.println("Start main method.");
 
 		GMarket_LinkHandler linkHandler = new GMarket_LinkHandler();
 		linkHandler.run();

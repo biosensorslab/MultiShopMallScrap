@@ -52,7 +52,7 @@ class GMarket{
 //        }
 //    }
 
-
+    //Gmarkt의 메인 카테고리 목록과 주소를 얻어온다.
     public HashMap<String, String> Main_Cateory() {
         HashMap<String, String> category_address = new HashMap<String, String>();
         try {
